@@ -44,7 +44,12 @@
                 width: 177.78vh;
             }
         }
-
+    .bottom-right-absolute{
+        position: absolute;
+        top:0;
+        right:1%;
+        color: #FFFFFF;
+    }
     </style>
 </head>
 <body>
@@ -56,6 +61,33 @@
     <h1>It's all about to change!</h1>
     <p>Michael A. Stratton, independent software consultant, is working on something ...</p>
 </div>
+<div class="timer" onload="timer(1800)">
 
+    <div class="time bottom-right-absolute">
+        <strong><h3><span id="time">Loading...</span></h3></strong>
+    </div>
+</div>
+<script>
+    var time = 60 * 60;
+    setInterval(function() {
+        var seconds = time % 60;
+        var minutes = (time - seconds) / 60;
+        // var hours = (time - seconds) / 360;
+        if (seconds.toString().length == 1) {
+            seconds = "0" + seconds;
+        }
+        if (minutes.toString().length == 1) {
+            minutes = "0" + minutes;
+        }
+        // if (hours.toString().length == 1) {
+        //     hours = "0" + hours;
+        // }
+        document.getElementById("time").innerHTML = minutes + ":" + seconds;
+        time--;
+        if (time == 0) {
+            window.location.href = "https://daomega.com";
+        }
+    }, 1000);
+</script>
 </body>
 </html>
